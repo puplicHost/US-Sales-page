@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Logistics Lead Gen & Dispatch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#090D1A;
+    --surface:#0F1629;
+    --surface-2:#0A1020;
+    --border:#1E2A45;
+    --amber:#F5A623;
+    --steel:#3B82F6;
+    --text:#F0F4FF;
+    --muted:#6B7A99;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:18px 0;border-bottom:1px solid var(--amber);flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0;}
+  .logo{
+    width:40px;height:40px;border-radius:0;flex:none;
+    background:var(--amber);color:#090D1A;font-weight:800;font-size:20px;
+    display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;
+  }
+  .brand .name{font-weight:500;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .brand .est{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:1px;}
+  .brand .nameblock{display:flex;flex-direction:column;line-height:1.1;}
+  .badges{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .badge.flag{
+    font-size:12px;font-weight:500;padding:7px 14px;border-radius:999px;
+    border:1px solid var(--steel);color:var(--text);white-space:nowrap;
+  }
+  .badge.price{
+    color:var(--amber);font-weight:700;font-size:14px;white-space:nowrap;
+    letter-spacing:.01em;
+  }
+  .badge.price .arrow{opacity:.8;margin-left:4px;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:90px 0 80px;text-align:center;overflow:hidden;}
+  .hero .grid-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size:54px 54px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 40%, #000 30%, transparent 80%);
+    mask-image:radial-gradient(ellipse 70% 70% at 50% 40%, #000 30%, transparent 80%);
+    animation:gridpulse 7s ease-in-out infinite;
+  }
+  @keyframes gridpulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+  .hero .badge-avail{
+    position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--amber);margin-bottom:22px;
+  }
+  .hero .badge-avail .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 4px rgba(245,166,35,.18);animation:dotpulse 2.4s ease-in-out infinite;
+  }
+  @keyframes dotpulse{0%,100%{box-shadow:0 0 0 4px rgba(245,166,35,.18);}50%{box-shadow:0 0 0 7px rgba(245,166,35,.05);}}
+  .hero h1{
+    position:relative;z-index:1;
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    font-size:clamp(42px,8vw,72px);line-height:1.0;letter-spacing:-2px;
+    max-width:16ch;margin:0 auto 20px;text-transform:uppercase;
+  }
+  .hero h1 .hl{color:var(--amber);}
+  .hero p.sub{
+    position:relative;z-index:1;
+    font-size:18px;color:var(--muted);max-width:480px;margin:0 auto 34px;
+  }
+  .btn{
+    position:relative;z-index:1;
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;border:none;
+    background:var(--amber);color:#090D1A;font-weight:700;font-size:15px;
+    text-transform:uppercase;letter-spacing:1px;
+    padding:16px 40px;border-radius:0;transition:background .2s ease,color .2s ease;
+  }
+  .btn:hover{background:#fff;color:#090D1A;}
+  .btn .ar{font-weight:700;transition:transform .2s ease;}
+  .btn:hover .ar{transform:translateX(4px);}
+
+  /* ===== SECTION TITLES ===== */
+  .section-label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    font-weight:600;text-align:center;margin:0 0 28px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services{padding:80px 0;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .card{
+    position:relative;background:linear-gradient(160deg,var(--surface),var(--surface-2));
+    border:1px solid var(--border);border-left:3px solid var(--amber);
+    border-radius:4px;padding:30px 26px;
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-5px);border-color:var(--amber);box-shadow:0 14px 40px rgba(245,166,35,.15);}
+  .card .ico{
+    width:48px;height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+    background:rgba(245,166,35,.12);font-size:24px;margin-bottom:16px;
+  }
+  .card h3{font-family:'Inter',sans-serif;font-weight:600;font-size:18px;color:var(--text);margin-bottom:14px;}
+  .card ul{list-style:none;}
+  .card li{
+    color:var(--muted);font-size:15px;padding-left:20px;position:relative;margin-bottom:10px;
+  }
+  .card li:before{
+    content:"—";position:absolute;left:0;top:0;color:var(--amber);font-weight:700;
+  }
+
+  /* ===== WHY ME ===== */
+  .why{padding:80px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .why-list{max-width:760px;margin:0 auto;}
+  .why-item{
+    display:flex;gap:22px;align-items:flex-start;padding:24px 4px;
+    border-bottom:1px solid var(--border);
+  }
+  .why-item:last-child{border-bottom:none;}
+  .why-item .num{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;color:var(--amber);
+    line-height:1;flex:none;width:48px;
+  }
+  .why-item .t{font-weight:600;font-size:17px;color:var(--text);margin-bottom:4px;}
+  .why-item .d{color:var(--muted);font-size:15px;}
+
+  /* ===== NUMBERS ===== */
+  .numbers{padding:80px 0;text-align:center;}
+  .num-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:880px;margin:0 auto;
+  }
+  .num{position:relative;padding:8px 12px;}
+  .num:not(:last-child):after{
+    content:"";position:absolute;right:-1px;top:15%;height:70%;width:1px;background:var(--border);
+  }
+  .num .n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(48px,8vw,64px);color:var(--amber);line-height:.95;}
+  .num .l{color:var(--muted);font-size:13px;margin-top:10px;text-transform:uppercase;letter-spacing:.1em;}
+
+  /* ===== FINAL CTA ===== */
+  .final{background:var(--surface);border-top:1px solid var(--amber);padding:80px 0;text-align:center;}
+  .final h2{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(30px,5vw,44px);
+    letter-spacing:-.5px;text-transform:uppercase;max-width:22ch;margin:0 auto 14px;line-height:1.05;
+  }
+  .final .note{color:var(--muted);font-size:14px;letter-spacing:.04em;margin-bottom:34px;}
+  .final-actions{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+  .email-link{color:var(--muted);font-size:15px;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s ease,border-color .2s ease;}
+  .email-link:hover{color:var(--amber);border-color:var(--amber);}
+  .email-link b{color:var(--text);font-weight:600;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:28px 0;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.03em;}
+
+  @media(max-width:680px){
+    .hero{padding:56px 0 48px;}
+    .services,.why,.numbers,.final{padding:48px 0;}
+    .cards{grid-template-columns:1fr;}
+    .num-grid{grid-template-columns:1fr;gap:30px;}
+    .num:not(:last-child):after{display:none;}
+    .why-item{flex-direction:row;}
+    .topbar{justify-content:center;text-align:center;}
+    .brand{width:100%;justify-content:center;}
+    .badges{width:100%;justify-content:center;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <header class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">[L]</div>
+        <div class="nameblock">
+          <span class="name">[Your Name / Company]</span>
+          <span class="est">Est. 2022</span>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge flag">Serving the US Market 🇺🇸</span>
+        <span class="badge price">Starting from $[XXX]/month <span class="arrow">→</span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO -->
+  <section class="wrap hero">
+    <div class="grid-bg"></div>
+    <span class="badge-avail"><span class="dot"></span>Available for New Clients</span>
+    <h1>More Loads. Less Hassle. <span class="hl">Booked Calls.</span></h1>
+    <p class="sub">[I/We] deliver B2B freight clients and run your daily dispatch for US trucking and logistics companies.</p>
+    <a class="btn" href="[CALENDAR_LINK]">Book a Free 15-Min Call <span class="ar">→</span></a>
+  </section>
+
+  <!-- 3. SERVICES -->
+  <section class="wrap services">
+    <p class="section-label">What I Do For You</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">📈</div>
+        <h3>Lead Generation</h3>
+        <ul>
+          <li>Finds new B2B shippers &amp; freight clients</li>
+          <li>Ready-to-call leads, no cold-list guessing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ico">🚚</div>
+        <h3>Dispatch &amp; Coordination</h3>
+        <ul>
+          <li>Manages daily shipments &amp; driver scheduling</li>
+          <li>One point of contact for your whole operation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHY ME -->
+  <section class="why">
+    <div class="wrap">
+      <p class="section-label">Why Owners Trust Me</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="num">01</div>
+          <div>
+            <div class="t">US Market Focused</div>
+            <div class="d">I only work US freight — I know the lanes, rates, and buyers.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="num">02</div>
+          <div>
+            <div class="t">Flat Monthly Rate</div>
+            <div class="d">No commissions, no surprises. You know the cost up front.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="num">03</div>
+          <div>
+            <div class="t">You Run the Truck</div>
+            <div class="d">I handle the phones and the dispatches — you drive revenue.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. NUMBERS -->
+  <section class="wrap numbers">
+    <p class="section-label">By the Numbers</p>
+    <div class="num-grid">
+      <div class="num"><div class="n">[47]</div><div class="l">Clients Served</div></div>
+      <div class="num"><div class="n">[12,000+]</div><div class="l">Shipments Managed</div></div>
+      <div class="num"><div class="n">[3]</div><div class="l">Years in US Logistics</div></div>
+    </div>
+  </section>
+
+  <!-- 6. FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Ready to grow your fleet's client base? Let's talk.</h2>
+      <p class="note">No contracts. No retainers. Just results.</p>
+      <div class="final-actions">
+        <a class="btn" href="[CALENDAR_LINK]">Book a Free 15-Min Call <span class="ar">→</span></a>
+        <a class="email-link" href="mailto:[you@email.com]">or email me at <b>[you@email.com]</b></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    © 2025 [Your Name] · US Logistics Services
+  </footer>
+
+</body>
+</html>
